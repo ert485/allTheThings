@@ -38,7 +38,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{url('/home')}}">Search</a></li>
                         <li><a href="{{url('/return')}}">Return Bin</a></li>
-                        <li><a href="{{url('/capture')}}">Add Bin</a></li>
+                        <li><a href="{{url('/bin/create')}}">Add Bin</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

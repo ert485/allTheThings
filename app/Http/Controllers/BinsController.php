@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CaptureController extends Controller
+class BinsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,7 +23,6 @@ class CaptureController extends Controller
      */
     public function index()
     {
-        return view('capture');
         //
     }
 
@@ -34,7 +33,7 @@ class CaptureController extends Controller
      */
     public function create()
     {
-        //
+        return view('capture');
     }
 
     /**
@@ -52,7 +51,7 @@ class CaptureController extends Controller
         }
         $test = "tt";
         if(preg_match('/^[a-zA-Z]+[a-zA-Z0-9\-]+$/', $tags)){
-            $filename = "images/" . $name . $tags . ".jpg";
+            $filename = "images/" . $name . "-" . $tags . ".jpg";
             file_put_contents($filename, base64_decode($request->binImage));
             return redirect('home');
         }

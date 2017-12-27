@@ -2,7 +2,7 @@
 
 @section('content-for-capture') <!-- a bug caused the need for a new content location (outsite div 'app') -->
 
-{{ Form::open(['action' => 'CaptureController@store', 'method' => 'POST']) }}
+{{ Form::open(['action' => 'BinsController@store', 'method' => 'POST']) }}
 <input id="binImage" type="hidden" name="binImage" value="" />
 
 <p align="center">
