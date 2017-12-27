@@ -1,0 +1,372 @@
+<-> Running c9Setup.bash in /home/ubuntu/workspace: 2017-12-23 02:43:55
+gpg: keyring `/tmp/tmp8bcl75r_/secring.gpg' created
+gpg: keyring `/tmp/tmp8bcl75r_/pubring.gpg' created
+gpg: requesting key E5267A6C from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmp8bcl75r_/trustdb.gpg: trustdb created
+gpg: key E5267A6C: public key "Launchpad PPA for Ondřej Surý" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+Get:1 http://ppa.launchpad.net trusty InRelease [20.9 kB]
+Get:2 http://ppa.launchpad.net trusty/main amd64 Packages [58.9 kB]
+Get:3 http://ppa.launchpad.net trusty/main i386 Packages [58.9 kB]
+Fetched 139 kB in 2s (68.6 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libssl1.1 php-common php7.1-cli php7.1-common php7.1-json php7.1-opcache
+  php7.1-readline
+Suggested packages:
+  php-pear
+The following NEW packages will be installed:
+  libapache2-mod-php7.1 libssl1.1 php-common php7.1-cli php7.1-common
+  php7.1-json php7.1-opcache php7.1-readline
+0 upgraded, 8 newly installed, 0 to remove and 11 not upgraded.
+Need to get 4925 kB of archives.
+After this operation, 18.0 MB of additional disk space will be used.
+Get:1 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main libssl1.1 amd64 1.1.0g-2.1+ubuntu14.04.1+deb.sury.org+1 [1324 kB]
+Get:2 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main php-common all 1:55+ubuntu14.04.1+deb.sury.org+1 [14.5 kB]
+Get:3 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main php7.1-common amd64 7.1.12-3+ubuntu14.04.1+deb.sury.org+1 [883 kB]
+Get:4 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main php7.1-json amd64 7.1.12-3+ubuntu14.04.1+deb.sury.org+1 [17.3 kB]
+Get:5 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main php7.1-opcache amd64 7.1.12-3+ubuntu14.04.1+deb.sury.org+1 [141 kB]
+Get:6 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main php7.1-readline amd64 7.1.12-3+ubuntu14.04.1+deb.sury.org+1 [12.2 kB]
+Get:7 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main php7.1-cli amd64 7.1.12-3+ubuntu14.04.1+deb.sury.org+1 [1295 kB]
+Get:8 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main libapache2-mod-php7.1 amd64 7.1.12-3+ubuntu14.04.1+deb.sury.org+1 [1238 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+Preconfiguring packages ...
+Fetched 4925 kB in 12s (385 kB/s)
+Selecting previously unselected package libssl1.1:amd64.
+(Reading database ... 72975 files and directories currently installed.)
+Preparing to unpack .../libssl1.1_1.1.0g-2.1+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking libssl1.1:amd64 (1.1.0g-2.1+ubuntu14.04.1+deb.sury.org+1) ...
+Selecting previously unselected package php-common.
+Preparing to unpack .../php-common_1%3a55+ubuntu14.04.1+deb.sury.org+1_all.deb ...
+Unpacking php-common (1:55+ubuntu14.04.1+deb.sury.org+1) ...
+Selecting previously unselected package php7.1-common.
+Preparing to unpack .../php7.1-common_7.1.12-3+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking php7.1-common (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Selecting previously unselected package php7.1-json.
+Preparing to unpack .../php7.1-json_7.1.12-3+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking php7.1-json (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Selecting previously unselected package php7.1-opcache.
+Preparing to unpack .../php7.1-opcache_7.1.12-3+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking php7.1-opcache (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Selecting previously unselected package php7.1-readline.
+Preparing to unpack .../php7.1-readline_7.1.12-3+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking php7.1-readline (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Selecting previously unselected package php7.1-cli.
+Preparing to unpack .../php7.1-cli_7.1.12-3+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking php7.1-cli (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Selecting previously unselected package libapache2-mod-php7.1.
+Preparing to unpack .../libapache2-mod-php7.1_7.1.12-3+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking libapache2-mod-php7.1 (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Setting up libssl1.1:amd64 (1.1.0g-2.1+ubuntu14.04.1+deb.sury.org+1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+Setting up php-common (1:55+ubuntu14.04.1+deb.sury.org+1) ...
+Setting up php7.1-common (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/calendar.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/ctype.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/exif.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/fileinfo.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/ftp.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/gettext.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/iconv.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/pdo.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/phar.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/posix.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/shmop.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/sockets.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/sysvmsg.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/sysvsem.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/sysvshm.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/tokenizer.ini with new version
+Setting up php7.1-json (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/json.ini with new version
+Setting up php7.1-opcache (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/opcache.ini with new version
+Setting up php7.1-readline (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/readline.ini with new version
+Setting up php7.1-cli (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+update-alternatives: using /usr/bin/php7.1 to provide /usr/bin/php (php) in auto mode
+update-alternatives: using /usr/bin/phar7.1 to provide /usr/bin/phar (phar) in auto mode
+update-alternatives: using /usr/bin/phar.phar7.1 to provide /usr/bin/phar.phar (phar.phar) in auto mode
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/cli/php.ini with new version
+Setting up libapache2-mod-php7.1 (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/apache2/php.ini with new version
+libapache2-mod-php7.1: php5 module already enabled, not enabling PHP 7.1
+Processing triggers for libc-bin (2.19-0ubuntu6.11) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  php7.1-xml
+0 upgraded, 1 newly installed, 0 to remove and 11 not upgraded.
+Need to get 113 kB of archives.
+After this operation, 524 kB of additional disk space will be used.
+Get:1 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main php7.1-xml amd64 7.1.12-3+ubuntu14.04.1+deb.sury.org+1 [113 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+Fetched 113 kB in 0s (140 kB/s)
+Selecting previously unselected package php7.1-xml.
+(Reading database ... 73116 files and directories currently installed.)
+Preparing to unpack .../php7.1-xml_7.1.12-3+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking php7.1-xml (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Processing triggers for libapache2-mod-php7.1 (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Setting up php7.1-xml (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/dom.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/simplexml.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/wddx.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/xml.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/xmlreader.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/xmlwriter.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/xsl.ini with new version
+Processing triggers for libapache2-mod-php7.1 (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  php7.1-mbstring
+0 upgraded, 1 newly installed, 0 to remove and 11 not upgraded.
+Need to get 463 kB of archives.
+After this operation, 1542 kB of additional disk space will be used.
+Get:1 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main php7.1-mbstring amd64 7.1.12-3+ubuntu14.04.1+deb.sury.org+1 [463 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+Fetched 463 kB in 1s (240 kB/s)
+Selecting previously unselected package php7.1-mbstring.
+(Reading database ... 73137 files and directories currently installed.)
+Preparing to unpack .../php7.1-mbstring_7.1.12-3+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking php7.1-mbstring (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Processing triggers for libapache2-mod-php7.1 (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Setting up php7.1-mbstring (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/mbstring.ini with new version
+Processing triggers for libapache2-mod-php7.1 (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libzip5
+The following NEW packages will be installed:
+  libzip5 php7.1-zip
+0 upgraded, 2 newly installed, 0 to remove and 11 not upgraded.
+Need to get 72.5 kB of archives.
+After this operation, 291 kB of additional disk space will be used.
+Get:1 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main libzip5 amd64 1.3.2-1+ubuntu14.04.1+deb.sury.org+1 [52.7 kB]
+Get:2 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main php7.1-zip amd64 7.1.12-3+ubuntu14.04.1+deb.sury.org+1 [19.8 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+Fetched 72.5 kB in 0s (102 kB/s)
+Selecting previously unselected package libzip5:amd64.
+(Reading database ... 73146 files and directories currently installed.)
+Preparing to unpack .../libzip5_1.3.2-1+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking libzip5:amd64 (1.3.2-1+ubuntu14.04.1+deb.sury.org+1) ...
+Selecting previously unselected package php7.1-zip.
+Preparing to unpack .../php7.1-zip_7.1.12-3+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking php7.1-zip (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Processing triggers for libapache2-mod-php7.1 (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Setting up libzip5:amd64 (1.3.2-1+ubuntu14.04.1+deb.sury.org+1) ...
+Setting up php7.1-zip (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/zip.ini with new version
+Processing triggers for libc-bin (2.19-0ubuntu6.11) ...
+Processing triggers for libapache2-mod-php7.1 (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  php7.1-mysql
+0 upgraded, 1 newly installed, 0 to remove and 11 not upgraded.
+Need to get 119 kB of archives.
+After this operation, 507 kB of additional disk space will be used.
+Get:1 http://ppa.launchpad.net/ondrej/php/ubuntu/ trusty/main php7.1-mysql amd64 7.1.12-3+ubuntu14.04.1+deb.sury.org+1 [119 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+Fetched 119 kB in 0s (166 kB/s)
+Selecting previously unselected package php7.1-mysql.
+(Reading database ... 73161 files and directories currently installed.)
+Preparing to unpack .../php7.1-mysql_7.1.12-3+ubuntu14.04.1+deb.sury.org+1_amd64.deb ...
+Unpacking php7.1-mysql (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Processing triggers for libapache2-mod-php7.1 (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Setting up php7.1-mysql (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/mysqlnd.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/mysqli.ini with new version
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+
+Creating config file /etc/php/7.1/mods-available/pdo_mysql.ini with new version
+Processing triggers for libapache2-mod-php7.1 (7.1.12-3+ubuntu14.04.1+deb.sury.org+1) ...
+Module php5 disabled.
+To activate the new configuration, you need to run:
+  service apache2 restart
+Considering dependency mpm_prefork for php7.1:
+Considering conflict mpm_event for mpm_prefork:
+Considering conflict mpm_worker for mpm_prefork:
+Module mpm_prefork already enabled
+Considering conflict php5 for php7.1:
+Enabling module php7.1.
+To activate the new configuration, you need to run:
+  service apache2 restart
+Site 000-default disabled.
+Site 001-cloud9 disabled.
+Enabling site 002-laravel.
+/home/ubuntu/workspace
+Changed current directory to /home/ubuntu/.composer
+Using version ^1.5 for laravel/installer
+./composer.json has been created
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 9 installs, 0 updates, 0 removals
+  - Installing symfony/process (v4.0.2): Downloading (connecting...)Downloading (0%)           Downloading (25%)Downloading (35%)Downloading (45%)Downloading (55%)Downloading (70%)Downloading (85%)Downloading (95%)Downloading (100%)
+  - Installing symfony/filesystem (v4.0.2): Downloading (connecting...)Downloading (0%)           Downloading (30%)Downloading (40%)Downloading (65%)Downloading (100%)
+  - Installing symfony/polyfill-mbstring (v1.6.0): Downloading (connecting...)Downloading (0%)           Downloading (35%)Downloading (60%)Downloading (100%)
+  - Installing symfony/console (v4.0.2): Downloading (connecting...)Downloading (0%)           Downloading (5%)Downloading (10%)Downloading (15%)Downloading (20%)Downloading (25%)Downloading (30%)Downloading (35%)Downloading (40%)Downloading (45%)Downloading (50%)Downloading (55%)Downloading (60%)Downloading (65%)Downloading (70%)Downloading (75%)Downloading (80%)Downloading (85%)Downloading (90%)Downloading (95%)Downloading (100%)
+  - Installing guzzlehttp/promises (v1.3.1): Downloading (connecting...)Downloading (0%)           Downloading (30%)Downloading (60%)Downloading (80%)Downloading (100%)
+  - Installing psr/http-message (1.0.1): Downloading (connecting...)Downloading (0%)           Downloading (95%)Downloading (100%)
+  - Installing guzzlehttp/psr7 (1.4.2): Downloading (connecting...)Downloading (0%)           Downloading (5%)Downloading (10%)Downloading (15%)Downloading (20%)Downloading (25%)Downloading (30%)Downloading (85%)Downloading (90%)Downloading (100%)
+  - Installing guzzlehttp/guzzle (6.3.0): Downloading (connecting...)Downloading (0%)           Downloading (5%)Downloading (15%)Downloading (25%)Downloading (30%)Downloading (35%)Downloading (40%)Downloading (50%)Downloading (60%)Downloading (65%)Downloading (75%)Downloading (80%)Downloading (90%)Downloading (95%)Downloading (100%)
+  - Installing laravel/installer (v1.5.0): Downloading (connecting...)Downloading (0%)           Downloading (100%)
+symfony/console suggests installing symfony/event-dispatcher ()
+symfony/console suggests installing symfony/lock ()
+symfony/console suggests installing psr/log (For using the console logger)
+guzzlehttp/guzzle suggests installing psr/log (Required for using the Log middleware)
+Writing lock file
+Generating autoload files
