@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class BinsController extends Controller
 {
@@ -44,20 +45,23 @@ class BinsController extends Controller
      */
     public function store(Request $request)
     {
+        $imageDir= "../images/" . Auth::user()->id ;
+        if(!file_exists ($imageDir)){
+            mkdir($imageDir);
+        }
         $name = $request->name;
         $tags = $request->tags;
         if(strlen($name)<1){
-            return "Error, need bin name";
+            return "Error, need bin name <br>";
         }
-        $test = "tt";
-        if(preg_match('/^[a-zA-Z]+[a-zA-Z0-9\-]+$/', $tags)){
-            $filename = "../images/" . $name . "-" . $tags . ".jpg";
-            file_put_contents($filename, base64_decode($request->binImage));
-            return redirect('home');
+        else if(! preg_match('/^[a-zA-Z]+[a-zA-Z0-9\-]+$/', $tags)){
+            echo "$tags <br>";
+            return "Error, tags must be alphaNumeric, and separated by - (hyphen) <br>";
         }
         else{
-            echo "$tags <br>";
-            return "Error, tags must be alphaNumeric, and separated by - (hyphen)";
+            $filename = $imageDir . "/" . $name . "-" . $tags . ".jpg";
+            file_put_contents($filename, base64_decode($request->binImage));
+            return redirect('home');
         }
     }
 
