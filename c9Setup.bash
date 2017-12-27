@@ -1,49 +1,58 @@
 #!/bin/bash
 
+# Preps a laravel project on a blank cloud 9 workspace
+# Installs dependencies for laravel 5.5
+
 # Usage:
-    # source c9Setup.bash                       # run setup in default directory
-    # laravel new projectName                   # create new laravel project
-    #   cp projectName/* .                      # move regular files
-    #   cp projectName/.* .                     # move hidden files
-    #   rm projectName                          # remove empty directory
-
-# Usage with parameters:
-    # source echo $HOME/dir | c9Setup.bash      # run setup in $HOME/dir directory
-
-defaultDir="$HOME/workspace"
-
-# Sets the directory to host from
-# parameters are from stdin, timeout of 1 second each
-# param: dir (string) the directory to host from
-#       -default is $defaultDir
-function setDir(){
-    # parameters are from stdin, timeout of 1 second each
-    echo "Enter the directory to host from"
-    read -t 1 dir
-    if [ -z "$dir" ]; then
-        echo "timeout, using default"
-        dir="$defaultDir"
-    fi
-    # check for absolute path
-    if [[ "$dir" = /* ]]; then
-        dir="$dir"
+    # -run "source c9Setup.bash" in terminal
+    # -follow prompts
+    
+# Gets input from user (info about the laravel project)
+function getInput(){
+    echo "In which directory should the laravel project live?"
+    read dir
+    echo "Are you starting from a git repo or new project? (enter 'git' or 'new')"
+    read gitOrNew
+    if [ "$gitOrNew" = "new" ]; then
+        echo "What is the project name?"
+        read projectName
+        echo "Do you want to generate user login? (enter 'yes' or 'no')"
+        read auth
     else
-        dir="$PWD/$dir"
+        echo "Enter the git url (https://github.com/ will be prepended if no 'http' is included)"
+        read gitURL
     fi
-    echo "Using directory: $dir"
 }
 
-# logs results to file
+# Modifies script input
+function processInput(){
+  # store path
+    wasIn=$PWD
+  # get absolute path (makes temp file to parse the input properly)
+    echo "mkdir -p $dir" > tmp
+    echo "cd $dir" >> tmp
+    . tmp
+    rm -f tmp
+    dir=$PWD
+    cd $wasIn
+    echo "Using directory: $dir"
+  # check git url for http
+    if [ ! "$gitURL" = http* ]; then
+        gitURL="https://github.com/$gitURL"
+    fi
+}
+
+# starts results log file
 function initLogs(){
     mkdir -p "$dir/logs"
     logFile="$dir/logs/c9Setup.log.txt"
-    serveLogFile="$dir/logs/serve.log.txt"
+    servelogFile="$dir/logs/serve.log.txt"
   # get year-month-day Hour:Minute:Second timestamp
     timestamp() {
       date +"%Y-%m-%d %H:%M:%S"
     }
   # add timestamp to each log
-    echo "<-> Running c9Setup.bash in $dir: $(timestamp)" >> $logFile >> $serveLogFile
+    echo "<-> Running c9Setup.bash in $dir: $(timestamp)" >> $logFile >> $servelogFile
     echo "<-> Running c9Setup.bash in $dir: $(timestamp)" >> $logFile >> $logFile
 }
 
@@ -93,7 +102,6 @@ function setSiteConf(){
     cd /etc/apache2/sites-enabled
     sudo a2dissite -q *; sudo a2ensite -q $newConfName
     cd $p
-    echo $dir
 }
 
 # gets laravel installer
@@ -103,22 +111,95 @@ function installLaravelDependencies(){
     export PATH
 }
 
+# fix database bug (default string length)
+function defaultStringLengthMod(){
+    sed -i "N;N;/boot()\\n    {/a\\\t\\tSchema::defaultStringLength(191);" $dir/app/Providers/AppServiceProvider.php  
+    sed -i "/use Illuminate\\\Support\\\ServiceProvider;/ause Illuminate\\\Support\\\Facades\\\Schema;" $dir/app/Providers/AppServiceProvider.php
+}
+
+# edit database config
+function databaseConfig(){
+    cp .env.example .env
+    sed -i "/DB_DATABASE=/c\DB_DATABASE=c9" $dir/.env
+    sed -i "/DB_USERNAME=/c\DB_USERNAME=$C9_USER" $dir/.env
+    sed -i "/DB_PASSWORD=/c\DB_PASSWORD=" $dir/.env
+    php artisan key:generate
+}
+
+function newLaravel(){
+    cd $dir
+    laravel new $projectName
+    mv $projectName/* .
+    mv $projectName/.* .
+    rm -rf $projectName
+}
+
+function serveLaravel(){
+    run-apache2 &>> $servelogFile &                         # runs in background
+  # make executable that says where the site is hosted
+    echo "echo hosting at http://\$C9_PROJECT-\$C9_USER.c9users.io" > site
+    chmod +x site
+  # Display site location
+    ./site
+}
+
+function gitClone(){
+    cd $dir
+    git clone $gitURL tempLaravelSetup
+    mv tempLaravelSetup/* .
+    mv tempLaravelSetup/.* .
+    rm -rf tempLaravelSetup
+}
+
 # Start calling functions
 
-setDir
+getInput
+
+processInput
 
 initLogs
 
-echo "<-> Installing php dependencies"
+echo "<-> Installing php dependencies" | tee -a $logFile
 installPHPdependencies &>> $logFile
 
-echo "<-> Configuring Site"
+echo "<-> Configuring Site" | tee -a $logFile
 setSiteConf &>> $logFile 
 
-echo "<-> Serve at https://$C9_PROJECT-$C9_USER.c9users.io"
-run-apache2 &>> $serveLogFile &                         # runs in background
+echo "<-> Serve the site" | tee -a $logFile
+serveLaravel
 
-echo "<-> Installing Laravel dependencies"
-installLaravelDependencies &>> $logFile
+if [ "$gitOrNew" = "new" ]; then
+    
+    echo "<-> Installing Laravel dependencies" | tee -a $logFile
+    installLaravelDependencies &>> $logFile
+    
+    echo "<-> Making new Laravel project" | tee -a $logFile
+    newLaravel &>> $logFile
+    
+    echo "<-> Configuring database" | tee -a $logFile
+    databaseConfig &>> $logFile
+    
+    echo "<-> Default string length bug fix" | tee -a $logFile
+    defaultStringLengthMod &>> $logFile
+    
+    if [ "$auth" = "yes" ]; then
+        echo "<-> Making Auth" | tee -a $logFile
+        php artisan make:auth &>> $logFile
+        php artisan migrate &>> $logFile
+    fi
+    
+else 
 
-echo "<-> Configuring database"
+    echo "<-> Cloning git repo" | tee -a $logFile
+    gitClone &>> $logFile
+    
+    echo "<-> Configuring database" | tee -a $logFile
+    databaseConfig &>> $logFile
+    
+    composer update
+    
+    php artisan migrate
+    
+fi
+
+
