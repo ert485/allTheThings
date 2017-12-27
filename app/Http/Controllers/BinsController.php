@@ -51,7 +51,7 @@ class BinsController extends Controller
         }
         $test = "tt";
         if(preg_match('/^[a-zA-Z]+[a-zA-Z0-9\-]+$/', $tags)){
-            $filename = "images/" . $name . "-" . $tags . ".jpg";
+            $filename = "../images/" . $name . "-" . $tags . ".jpg";
             file_put_contents($filename, base64_decode($request->binImage));
             return redirect('home');
         }
