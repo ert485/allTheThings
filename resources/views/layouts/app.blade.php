@@ -70,10 +70,9 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
     </div>
-    
+    @yield('content-for-capture') <!-- a bug caused the need for a new content location (outsite div 'app') -->
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     
