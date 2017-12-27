@@ -36,7 +36,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="{{url('/home')}}">Search</a></li>
+                        <li><a href="{{url('/return')}}">Return Bin</a></li>
+                        <li><a href="{{url('/capture')}}">Add Bin</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

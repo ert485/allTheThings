@@ -46,8 +46,20 @@ class CaptureController extends Controller
     public function store(Request $request)
     {
         $name = $request->name;
-        file_put_contents ( "images/$name.jpg" , base64_decode($request->headshot));
-        return redirect('home');
+        $tags = $request->tags;
+        if(strlen($name)<1){
+            return "Error, need bin name";
+        }
+        $test = "tt";
+        if(preg_match('/^[a-zA-Z]+[a-zA-Z0-9\-]+$/', $tags)){
+            $filename = "images/" . $name . $tags . ".jpg";
+            file_put_contents($filename, base64_decode($request->binImage));
+            return redirect('home');
+        }
+        else{
+            echo "$tags <br>";
+            return "Error, tags must be alphaNumeric, and separated by - (hyphen)";
+        }
     }
 
     /**
