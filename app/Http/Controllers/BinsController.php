@@ -41,9 +41,19 @@ class BinsController extends Controller
                 array_push($binsWithTag_names,$bin_name);
             }
         }
+        
+        $viewBin = $request->viewBin;
+        $viewBinName = $this->getBinName($viewBin);
+        $viewTags = $this->getTags($viewBin);
+        $checked = false;
         return view('bin/search')
             ->with('binNames', $binsWithTag_names)
-            ->with('binFileNames', $binsWithTag_fileNames);
+            ->with('binFileNames', $binsWithTag_fileNames)
+            ->with('viewBin', $viewBin)
+            ->with('viewBinName', $viewBinName)
+            ->with('tag', $tag)
+            ->with('viewTags', $viewTags)
+            ->with('checked', $checked);
     }
 
     /**
@@ -54,6 +64,10 @@ class BinsController extends Controller
     public function create()
     {
         return view('bin/create');
+    }
+    
+    public function checkout(Request $request){
+        return $request->bin;
     }
 
     /**
@@ -203,5 +217,20 @@ class BinsController extends Controller
               }
           }
           return $imagesWithTag;
+      }
+      
+      private function getTags($fileName){
+          $tags = array();
+          $subFileName = explode('.',$fileName);
+          $subFileName = $subFileName[0];
+          $subFileName = explode("-",$subFileName);
+          $i = 0;
+          foreach ($subFileName as $tag) {
+              if ($i!=0){
+                  array_push($tags,$tag);
+              }
+              $i++;
+          }
+          return $tags;
       }
 }

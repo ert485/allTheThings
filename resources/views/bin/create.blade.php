@@ -19,13 +19,10 @@
 <!-- webcam settings -->
 <script language="JavaScript">
 	Webcam.set({
-		width: 320,
-		height: 240,
-		dest_width: 640,
-		dest_height: 480,
-		// final cropped size
-		crop_width: 480,
-		crop_height: 480,
+		width: 1440*.5,
+		height: 1080*.5,
+		dest_width: 1440,
+		dest_height: 1080,
 
 		image_format: 'jpeg',
 		jpeg_quality: 90,

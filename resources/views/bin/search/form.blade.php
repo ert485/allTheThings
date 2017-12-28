@@ -7,9 +7,11 @@
             <li class="list-group-item">
                 {{ Form::text('tag', '', ['class' => 'form-control']) }}
             </li>
+            <!--  
             <div class="panel-footer">
-                {{Form::submit('Search', ['class' => 'btn btn-primary'])}}
+                {{ Form::submit('Search', ['class' => 'btn btn-primary']) }} 
             </div>
+            -->
         {{ Form::close() }}
     </ul>
 </div>
