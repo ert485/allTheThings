@@ -42,7 +42,8 @@ class BinsController extends Controller
             }
         }
         return view('bin/search')
-            ->with('binNames', $binsWithTag_names);
+            ->with('binNames', $binsWithTag_names)
+            ->with('binFileNames', $binsWithTag_fileNames);
     }
 
     /**

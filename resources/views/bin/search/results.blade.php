@@ -5,7 +5,15 @@
     <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 @if(isset($binNames) && (sizeof($binNames)>0))
-                    {{ var_dump($binNames) }}
+                    @foreach ($binNames as $binName)
+                        <a href="{{ url('/bin') . "/" . $binName }}">
+                        {{$binName}}
+                        <!-- 
+                        <img id="image_{{$binName}}"
+                            src="{{ url('"
+                            -->
+                        </a>
+                    @endforeach
                 @else
                     none
                 @endif
