@@ -24,8 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //if(strlen(Auth::user()->name)<1) echo "Not logged in";
-        //echo Auth::user()->name;
-        return view('home');
+        return redirect('search');
     }
 }
