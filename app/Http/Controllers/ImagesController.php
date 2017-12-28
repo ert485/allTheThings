@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class ImagesController extends Controller
 {
@@ -15,9 +16,7 @@ class ImagesController extends Controller
     {
         $this->middleware('auth');
     }
-    // Directory to look for image files
-    private $imageDir = '/home/cabox/workspace/images/';
-  
+
     // Known types of images and their meta type
     private $imageTypes = [
         'gif'=> 'image/gif',
@@ -47,7 +46,7 @@ class ImagesController extends Controller
     }
     
     public function index($imageName){
-        $imagePath = $this->imageDir . $imageName;
+        $imagePath = $this->getImageDir() . $imageName;
         $imageType = $this->getType($imageName);
         if (!$imageType) echo "error getting image type";
         else if( file_exists($imagePath) ){
@@ -57,5 +56,15 @@ class ImagesController extends Controller
             return;
         }
         else echo "image not found";
+    }
+    
+    /** 
+     * Get the directory where images are stored
+     */
+    private function getImageDir(){
+        if(Auth::check()){
+            return "../images/" . Auth::user()->id . "/";
+        }
+        return "";
     }
 }

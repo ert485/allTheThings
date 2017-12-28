@@ -19,9 +19,16 @@
 <!-- webcam settings -->
 <script language="JavaScript">
 	Webcam.set({
-		height: 720,
+		width: 320,
+		height: 240,
+		dest_width: 640,
+		dest_height: 480,
+		// final cropped size
+		crop_width: 480,
+		crop_height: 480,
+
 		image_format: 'jpeg',
-		jpeg_quality: 100,
+		jpeg_quality: 90,
 	});
 	Webcam.attach( 'preview' );
 </script>

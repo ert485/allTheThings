@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/bin', 'BinsController');
 Route::get('/search', 'BinsController@index');
+
+Route::get('/showImage/{imageName}', 'ImagesController@index');
