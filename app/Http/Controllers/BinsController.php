@@ -172,9 +172,9 @@ class BinsController extends Controller
      */
     private function getImageDir(){
 	    if(Auth::check()){
-		    $dir = "../images/" . Auth::user()->id . "/";
+		    $dir = "../storage/app/images/" . Auth::user()->id . "/";
 		if (!file_exists($dir))
-			mkdir($dir);
+			mkdir($dir, 0755, true);
 		return $dir;
         }
 	return "";

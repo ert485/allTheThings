@@ -63,7 +63,7 @@ class ImagesController extends Controller
      */
     private function getImageDir(){
         if(Auth::check()){
-            return "../images/" . Auth::user()->id . "/";
+            return "../storage/app/images/" . Auth::user()->id . "/";
         }
         return "";
     }
