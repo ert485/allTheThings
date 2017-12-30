@@ -24,4 +24,3 @@ Route::resource('/bin', 'BinsController');
 Route::get('/search', 'BinsController@index');
 
 Route::get('/showImage/{imageName}', 'ImagesController@index');
-Route::get('/checkout', 'BinsController@checkout');
