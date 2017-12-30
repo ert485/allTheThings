@@ -25,6 +25,9 @@ class BinsController extends Controller
      */
     public function index(Request $request)
     {
+        if(isset($request->checkout)){
+            $this->checkout($request->checkout);
+        }
         $tag = $request->input('tag');
         $binsWithTag = $this->searchImagesForTag($tag);
         $binsWithTag_names = array();
@@ -45,7 +48,8 @@ class BinsController extends Controller
         $viewBin = $request->viewBin;
         $viewBinName = $this->getBinName($viewBin);
         $viewTags = $this->getTags($viewBin);
-        $checked = false;
+        $checked = $this->isCheckedOut($viewBin);
+
         return view('bin/search')
             ->with('binNames', $binsWithTag_names)
             ->with('binFileNames', $binsWithTag_fileNames)
@@ -66,8 +70,19 @@ class BinsController extends Controller
         return view('bin/create');
     }
     
-    public function checkout(Request $request){
-        return $request->bin;
+    
+    private function checkout($fileName){
+        $imageDir= $this->getImageDir();
+        if ($fileName[0]!="_"){
+            rename($imageDir.$fileName, $imageDir."_" . $fileName);
+        }
+    }
+    
+    private function isCheckedOut($fileName){
+        if($fileName[0]=='_'){
+            return true;
+        }
+        return false;
     }
 
     /**
