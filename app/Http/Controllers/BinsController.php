@@ -171,10 +171,13 @@ class BinsController extends Controller
      * Get the directory where images are stored
      */
     private function getImageDir(){
-        if(Auth::check()){
-            return "../images/" . Auth::user()->id . "/";
+	    if(Auth::check()){
+		    $dir = "../images/" . Auth::user()->id . "/";
+		if (!file_exists($dir))
+			mkdir($dir);
+		return $dir;
         }
-        return "";
+	return "";
     }
     
     /**
