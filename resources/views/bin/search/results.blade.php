@@ -16,7 +16,7 @@
                             document.getElementById('image_{{$binName}}').height
                                 = Math.floor(window.innerHeight / 4)
                         </script>
-                        @if($i%4==0)
+                        @if($i%3==0)
                             <br><br>
                         @endif
                         </a>
