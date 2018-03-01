@@ -128,8 +128,13 @@ class BinsController extends Controller
     public function show($binName)
     {
         $fileName = $this->getBinFileName($binName);
-        echo $fileName . "<br>";
         echo $this->getBinName($fileName) . "<br>";
+        $tags = $this->getTags($fileName);
+        foreach ($tags as $tag) {
+            echo $tag . ', ';
+        }
+        echo '<br>';
+        echo '<img src=' . url('/showImage') . '/' . $fileName . "></img>";
         return;
     }
 
