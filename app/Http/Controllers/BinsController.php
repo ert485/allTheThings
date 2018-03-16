@@ -111,10 +111,10 @@ class BinsController extends Controller
             return "Error, tags must be alphaNumeric, and separated by - (hyphen) <br>";
         }
         else{
+            // delete old version
+            if( strlen($fileToReplace) > 0 ) unlink($imageDir . $fileToReplace);
             $filename = $imageDir . $name . "-" . $tags . ".jpg";
             file_put_contents($filename, base64_decode($request->binImage));
-          // delete old version
-            if( strlen($fileToReplace) > 0 ) unlink($imageDir . $fileToReplace);
             return redirect('home');
         }
     }
