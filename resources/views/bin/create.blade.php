@@ -14,7 +14,7 @@
 {{ Form::close() }}
 
 <!-- webcam.js library. See public/js/webcam.js for attribution -->
-<script type="text/javascript" src="{{ asset('js/webcam.js') }}"></script>
+<script type="text/javascript" src="{{ asset('webcam.min.js') }}"></script>
 
 <!-- webcam settings -->
 <script language="JavaScript">
