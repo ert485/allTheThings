@@ -231,10 +231,13 @@ class BinsController extends Controller
               if ( sizeof($subFileName) < 2 ) continue;
               $i = 0;
               foreach ($subFileName as $tag) {
-                  if ($i!=0){
-                      if ( strcmp($tag,$searchTag) == 0 ){
-                          array_push($imagesWithTag,$fileName);
-                      }
+                  $tag = preg_replace("/[^a-z]+/", "", strtolower($tag));
+                  $searchTag = preg_replace("/[^a-z]+/", "", strtolower($searchTag));
+                  similar_text($tag, $searchTag, $percentSimilar);
+                  if ($percentSimilar >= 75){
+                      echo $tag . "-" . $searchTag;
+                      array_push($imagesWithTag,$fileName);
+                      break;
                   }
                   $i++;
               }

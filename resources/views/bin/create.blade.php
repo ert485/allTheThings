@@ -6,7 +6,7 @@
 <input id="binImage" type="hidden" name="binImage" value="" />
 
 <p align="center">
-    Bin Name <input value="a0000" type="text" name="name" size="4" onfocus="this.value=''" /> &ensp;  &ensp; 
+    Bin Name <input value="b0000" type="text" name="name" size="4" onfocus="this.value=''" /> &ensp;  &ensp; 
     Tags <input value="tag1-tag2-tag3" type="text" name="tags" size="70" onfocus="this.value=''" />
     <input type="submit" name="submit" value="Submit" onClick="capture()"/>
     <div id="preview"></div>
