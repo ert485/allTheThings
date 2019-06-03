@@ -5,7 +5,6 @@
     <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 @if(isset($viewBin))
-                <h4> Text Rylan about borrowing/buying things at <b>1-639-471-4917</b> (include this bin number in the text - <b>{{$viewBinName}}</b>)</h4>
                     <table>
                             <td width=50>
                                 {{$viewBinName . ": " }}
