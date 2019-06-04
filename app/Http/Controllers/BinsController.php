@@ -101,9 +101,6 @@ class BinsController extends Controller
         $name = $request->name;
         $tags = $request->tags;
         
-      // check if bin already exists
-        $fileToReplace = $this->getBinFileName($name);
-        
         if(strlen($name)<1){
             return "Error, need bin name <br>";
         }
@@ -111,8 +108,6 @@ class BinsController extends Controller
             return "Error, tags must be alphaNumeric, and separated by - (hyphen) <br>";
         }
         else{
-            // delete old version
-            if( strlen($fileToReplace) > 0 ) unlink($imageDir . $fileToReplace);
             $filename = $imageDir . $name . "-" . $tags . ".jpg";
             file_put_contents($filename, base64_decode($request->binImage));
             return redirect('home');
@@ -192,7 +187,7 @@ class BinsController extends Controller
      */
     private function getBinFileName($binName){
         $binName = ltrim($binName,'_');
-        $allFileNames = scandir($this->getImageDir());
+        $allFileNames = $this->scan_sorted($this->getImageDir());
         foreach ($allFileNames as $fileName){
             $subFileName = explode(".", $fileName);
             $subFileName = explode("-", $subFileName[0]);
@@ -201,6 +196,17 @@ class BinsController extends Controller
         }
         // not found, return empty string
         return "";
+    }
+    
+    private function scan_sorted($dir){
+        $files = array();    
+        foreach (scandir($dir) as $file) {
+            $files[$file] = filemtime($dir . '/' . $file);
+        }
+    
+        arsort($files);
+        $files = array_keys($files);
+        return ($files) ? $files : false;
     }
     
     /**
@@ -223,7 +229,8 @@ class BinsController extends Controller
       */
       private function searchImagesForTag($searchTag){
           $imagesWithTag = array();
-          $allFileNames = scandir($this->getImageDir());
+          $allFileNames = $this->scan_sorted($this->getImageDir());
+          $matchBinNames = array();
           foreach($allFileNames as $fileName){
               $subFileName = explode('.',$fileName);
               $subFileName = $subFileName[0];
@@ -235,8 +242,10 @@ class BinsController extends Controller
                   $searchTag = preg_replace("/[^a-z]+/", "", strtolower($searchTag));
                   similar_text($tag, $searchTag, $percentSimilar);
                   if ($percentSimilar >= 75){
-                      echo $tag . "-" . $searchTag;
-                      array_push($imagesWithTag,$fileName);
+                      if ( ! in_array($this->getBinName($fileName), $matchBinNames) ) {
+                          array_push($imagesWithTag,$fileName);
+                          array_push($matchBinNames,$this->getBinName($fileName));
+                      }
                       break;
                   }
                   $i++;
