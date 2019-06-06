@@ -3,6 +3,8 @@ storageDir="/var/www/BiktrixBins/storage/app/images"
 serverStatus="$storageDir/server_status.txt"
 remoteName="biktrix"
 if [ `pgrep rclone | wc -w` -gt 0 ]; then exit; fi;
+date >> $storageDir/sync_log.txt 2>&1
+echo rclone move biktrix:1 $storageDir/1 -v >> $storageDir/sync_log.txt 2>&1
 rclone move biktrix:1 $storageDir/1 -v >> $storageDir/sync_log.txt 2>&1
 date > $serverStatus
 df -h >> $serverStatus
